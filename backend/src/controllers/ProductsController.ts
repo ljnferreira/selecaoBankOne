@@ -2,11 +2,10 @@ import { Request, Response } from "express";
 import {getRepository} from "typeorm";
 
 import Product from "../models/Product";
+import ProductsView from "../views/ProductsView";
 
 export default {
   async create(request: Request, response: Response){
-    
-    console.log(request.body)
     let{
       name,
       price,
@@ -48,7 +47,7 @@ export default {
 
     const products = await productRepository.find();
 
-    return response.json(products);
+    return response.json(ProductsView.renderMany(products));
   },
 
   async show(request: Request, response: Response){
@@ -56,21 +55,27 @@ export default {
 
     const productRepository = getRepository(Product);
 
-    const products = await productRepository.findOneOrFail(id);
+    const product = await productRepository.findOneOrFail(id);
 
-    return response.json(products);
+    return response.json(ProductsView.render(product));
   },
 
   async delete(request: Request, response: Response){
     const { id } =request.params;
 
     const productRepository = getRepository(Product);
-
-    const product = await productRepository.findOneOrFail(id);
-    product ? await productRepository.delete(id)
-    : response.json({
-      message: "error, register not found"
-    });
+    let product; 
+    try {
+      product = await productRepository.findOneOrFail(id);
+    } catch (error) {
+      return response.json({
+        message: "error, register not found",
+        error: error        
+      })
+    }
+    if (product) { 
+      await productRepository.delete(id);
+    } 
     return response.json({
       message: "deleted succesfully"
     });
