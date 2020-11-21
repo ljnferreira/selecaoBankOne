@@ -1,7 +1,6 @@
 import{
   Entity,
   Column,
-  PrimaryGeneratedColumn
 } from "typeorm";
 
 import Product from "./Product";
