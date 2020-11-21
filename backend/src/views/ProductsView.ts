@@ -21,8 +21,10 @@ export default {
       food.registrationDate = product.registrationDate;
       food.code = product.code;
       food.perishable = product.perishable;
+      if (food.perishable){
+        food.validUntil = product.validUntil;
+      }
       food.fabricationDate = product.fabricationDate;
-      food.validUntil = product.validUntil;
       food.measurementUnit = product.measurementUnit;
       
       return food;
