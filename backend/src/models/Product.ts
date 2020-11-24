@@ -20,22 +20,5 @@ export default class Product{
 
   @Column()
   categoryId: number;
-
-  @Column()
-  description: string;
   
-  @Column()
-  color: string;
-
-  @Column()
-  measurementUnit: string;
-
-  @Column()
-  fabricationDate: Date;
-
-  @Column()
-  perishable: boolean;
-
-  @Column()
-  validUntil: Date;
 }
