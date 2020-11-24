@@ -22,7 +22,7 @@ export default {
       validUntil
     } = request.body;
     
-    const registrationDate = format(new Date(Date.now()), 'MM/dd/yyyy')
+    const registrationDate = format(new Date(Date.now()), 'dd/MM/yyyy')
 
     const productRepository = getRepository(Product);
     
