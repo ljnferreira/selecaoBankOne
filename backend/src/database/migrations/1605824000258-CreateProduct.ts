@@ -32,6 +32,15 @@ export class CreateProduct1605824000258 implements MigrationInterface {
           name: 'categoryId',
           type: 'integer',
         },
+      ]
+    }));
+    await queryRunner.createTable(new Table({
+      name: 'clothingDetails',
+      columns:[
+        {
+          name: 'productId',
+          type: 'integer',
+        },
         {
           name: 'description',
           type: 'text',
@@ -41,6 +50,15 @@ export class CreateProduct1605824000258 implements MigrationInterface {
           name: 'color',
           type: 'text',
           isNullable: true,
+        },
+      ]
+    }));
+    await queryRunner.createTable(new Table({
+      name: 'foodDetails',
+      columns:[
+        {
+          name: 'productId',
+          type: 'integer',
         },
         {
           name: 'measurementUnit',
@@ -68,6 +86,8 @@ export class CreateProduct1605824000258 implements MigrationInterface {
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropTable('product');
+    await queryRunner.dropTable('clothingDetails');
+    await queryRunner.dropTable('foodDetails');
   }
 
 }

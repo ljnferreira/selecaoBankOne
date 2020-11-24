@@ -1,12 +1,15 @@
 import{
   Entity,
   Column,
+  PrimaryColumn
 } from "typeorm";
 
-import Product from "./Product";
-
-@Entity("foods")
-export default class Foods extends Product{
+@Entity("foodDetails")
+export default class FoodDetails{
+  
+  @PrimaryColumn()
+  productId: number;
+  
   @Column()
   measurementUnit: string;
 
