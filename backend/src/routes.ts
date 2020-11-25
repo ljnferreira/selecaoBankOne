@@ -4,6 +4,7 @@ import ProductsController from "./controllers/ProductsController";
 const routes = Router();
 
 routes.post('/products', ProductsController.create)
+routes.post('/products/bydate', ProductsController.filterByDate)
 routes.get('/products', ProductsController.index)
 routes.get('/products/:id', ProductsController.show)
 routes.delete('/products/:id', ProductsController.delete)

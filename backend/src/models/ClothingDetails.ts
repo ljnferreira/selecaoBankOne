@@ -1,13 +1,8 @@
 import {
   Entity,
   Column,
-  OneToOne,
-  JoinColumn,
-  PrimaryGeneratedColumn,
   PrimaryColumn
 } from "typeorm";
-
-import Product from "./Product";
 
 @Entity("clothingDetails")
 export default class ClothingDetails{

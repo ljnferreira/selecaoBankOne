@@ -5,7 +5,7 @@ import {
 } from "typeorm";
 
 @Entity("product")
-export default class Product{
+export default class ProductModel{
   @PrimaryGeneratedColumn("increment")
   code: number;
 
