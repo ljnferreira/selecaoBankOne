@@ -145,19 +145,19 @@ export default {
       initialDate,
       finalDate
     } = request.body;
-
-    const initialObjectDate = new Date(initialDate);
-    const finalObjectDate = new Date(finalDate);
-
+    
     const productRepository = getRepository(ProductModel);
     const products = await productRepository.find({
       where:{
-        registrationDate: Between(initialObjectDate, finalObjectDate),
+        registrationDate: Between(initialDate, finalDate),
       }
     });
 
-    console.log(products);
-    return response.status(200).json(ProductsView.renderMany(products));
+    const productsWithDetails: Product[] = await Promise.all(products.map(async (product) => {
+      return getProductWithDetails(product);
+    }))
+
+    return response.status(200).json(ProductsView.renderMany(productsWithDetails));
     
   }
 }
