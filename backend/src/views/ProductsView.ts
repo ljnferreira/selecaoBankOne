@@ -4,7 +4,11 @@ import Food from "../classes/Food";
 
 export default {
   render(product: Product):Product{
-    console.log(product instanceof(Clothing));
+    if(product instanceof(Clothing)){
+      
+    }else if(product instanceof(Food)){
+
+    }
     return product;
   },
 
