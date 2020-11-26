@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import {Between, getRepository} from "typeorm";
+import {Between, getRepository, Like} from "typeorm";
 
 import format from "date-fns/format";
 
@@ -143,21 +143,24 @@ export default {
   async filterByDate(request: Request, response: Response) {
     const {
       initialDate,
-      finalDate
+      finalDate,
+      name
     } = request.body;
     
     const productRepository = getRepository(ProductModel);
     const products = await productRepository.find({
       where:{
         registrationDate: Between(initialDate, finalDate),
+        name: Like(name)
       }
     });
 
-    const productsWithDetails: Product[] = await Promise.all(products.map(async (product) => {
-      return getProductWithDetails(product);
-    }))
+    const result = {
+      name: name,
+      quantity: products.length
+    }
 
-    return response.status(200).json(ProductsView.renderMany(productsWithDetails));
+    return response.status(200).json(result);
     
   }
 }
