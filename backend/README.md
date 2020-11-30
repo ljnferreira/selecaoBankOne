@@ -6,8 +6,8 @@ Product Manager API is an mini product manager made with nodejs as a part of the
 
 ### Pre-requisites
   
-  * Node v12.19.0 (install with [NVM](https://github.com/nvm-sh/nvm/blob/master/README.md) for more convenience).
-  * [Yarn](https://yarnpkg.com/) or NPM
+  * Node v12.19.0 (I suggest you to install with [NVM](https://github.com/nvm-sh/nvm/blob/master/README.md) for more convenience).
+  * [Yarn](https://yarnpkg.com/) or [NPM](https://www.npmjs.com/)
   * Git
 
   Run on bash:
@@ -21,11 +21,11 @@ Product Manager API is an mini product manager made with nodejs as a part of the
   ```
 
   ```bash
-    yarn install
+    yarn install or npm install
   ```
 
   ```bash
-    yarn dev
+    yarn dev or npm run dev
   ```
 
   If you followed all the steps correctly, the API will be listening on the port 5000 of your machine.
@@ -63,7 +63,7 @@ Product Manager API is an mini product manager made with nodejs as a part of the
       "validUntil": "2020-11-15T03:00:00.000Z" //only in case of perishable be true
     }
   ```
-  and this action will return an object with this format and data:
+  and this action will return an object with this format and data types:
 
   ```javascript
     {
@@ -83,6 +83,15 @@ Product Manager API is an mini product manager made with nodejs as a part of the
       "initialDate": "2020-11-23T00:00:00.000Z", //Javascript Date
       "finalDate": "2020-11-25T23:59:59.000Z", //Javascript Date
       "name": "product name" //the exact name of one product
+    }
+  ```
+
+  and this action will return an object with this format and data types:
+
+  ```javascript
+    {
+      name: "name",
+      quantity: 0.0
     }
   ```
 
