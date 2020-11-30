@@ -10,7 +10,7 @@ Product Manager API is an mini product manager made with nodejs as a part of the
   * [Yarn](https://yarnpkg.com/) or [NPM](https://www.npmjs.com/)
   * Git
 
-  Run on bash:
+  Open bash on a directory of your choice and execute the following commands:
   
   ```bash
     git clone https://github.com/ljnferreira/selecaoBankOne.git
@@ -39,6 +39,9 @@ Product Manager API is an mini product manager made with nodejs as a part of the
     * GET /products that return a list off all products and their respective details;
     * GET /products/:id that will return all details of an product with the specified id;
     * DELETE /products/:id that will delete a product with the specified id;
+
+
+  ### POST /create
 
   To create a new product you shall send a request on route /products/bydate with POST method with a request body following the examples bellow:
 
@@ -75,6 +78,8 @@ Product Manager API is an mini product manager made with nodejs as a part of the
     }
   ```
 
+  ### POST /products/bydate
+
   To get the quantity of an determined product with a specific name you shall send a request on
   route /products/bydate with POST method with a request body following the example bellow:
 
@@ -93,6 +98,84 @@ Product Manager API is an mini product manager made with nodejs as a part of the
       name: "name",
       quantity: 0.0
     }
+  ```
+
+  ### DELETE /products/:id
+
+  This method delete the registry that contains a given specific id that match the code field on the Product. If the product doesn't exists on database returns a failure message, if exists return a success message.
+
+  ### GET /products/:id
+
+  This method return the data of a product, if exists. Else, return a error message. Depending on the type returns data on the models bellow:
+
+  ```javascript
+    //clothing product
+    {
+      "name": "name",
+      "price": 0.00,
+      "categoryId": 1,
+      "color": "color",
+      "description": "description"
+    }
+
+    //food genre product
+    {
+      "name": "name",
+      "price": 0.00,
+      "categoryId": 2,
+      "fabricationDate": "2020-11-15T03:00:00.000Z", //Javascript Date
+      "measurementUnit": "Kg", //kilogram or liter
+      "perishable": true, //boolean - true or false
+      "validUntil": "2020-11-15T03:00:00.000Z" //only in case of perishable be true
+    }
+  ```
+
+  ### GET /products/
+
+  Return an array of objects with all product registries, independently of type. 
+  (Please, if you can contribute with implementation of tests anf pagination I will be grateful.
+  To se how contribute, take a look on the section bellow). Look at this simple response example: 
+
+  ```javascript
+    [
+      //clothing product
+      {
+        "name": "name",
+        "price": 0.00,
+        "categoryId": 1,
+        "color": "color",
+        "description": "description"
+      },
+      //food genre product
+      {
+        "name": "name",
+        "price": 0.00,
+        "categoryId": 2,
+        "fabricationDate": "2020-11-15T03:00:00.000Z", //Javascript Date
+        "measurementUnit": "Kg", //kilogram or liter
+        "perishable": true, //boolean - true or false
+        "validUntil": "2020-11-15T03:00:00.000Z" //only in case of perishable be true
+      },
+      //clothing product
+      {
+        "name": "name",
+        "price": 0.00,
+        "categoryId": 1,
+        "color": "color",
+        "description": "description"
+      },
+      //food genre product
+      {
+        "name": "name",
+        "price": 0.00,
+        "categoryId": 2,
+        "fabricationDate": "2020-11-15T03:00:00.000Z", //Javascript Date
+        "measurementUnit": "Kg", //kilogram or liter
+        "perishable": true, //boolean - true or false
+        "validUntil": "2020-11-15T03:00:00.000Z" //only in case of perishable be true
+      },
+
+    ]
   ```
 
 ## Contributing
