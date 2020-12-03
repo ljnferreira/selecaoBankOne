@@ -1,6 +1,6 @@
 # Product Manager API
 
-Product Manager API is an mini product manager made with nodejs as a part of the test from an potential employer.
+Product Manager API is an mini product manager made with nodejs as a part of the test from a potential employer.
 
 ## Installation
 
@@ -32,7 +32,7 @@ Product Manager API is an mini product manager made with nodejs as a part of the
 
 ## Usage
 
-  There are 5 (until now) routes with those method types on the api:
+  There are 6 (so far) routes with these method types on the api:
   
     * POST /products that will create a new product;
     * POST /products/bydate that will return an object with quantity of an product registered between 2 dates;
@@ -45,7 +45,7 @@ Product Manager API is an mini product manager made with nodejs as a part of the
 
   ### POST /create
 
-  To create a new product you shall send a request on route /products/bydate with POST method with a request body following the examples bellow:
+  To create a new product, send a POST request to '/products/bydate' with the following payload:
 
   ```javascript
     //clothing product
@@ -82,8 +82,8 @@ Product Manager API is an mini product manager made with nodejs as a part of the
 
   ### POST /products/bydate
 
-  To get the quantity of an determined product with a specific name you shall send a request on
-  route /products/bydate with POST method with a request body following the example bellow:
+  To get the quantity of a certain product in the inventory, send a POST request with
+  the following payload:
 
   ```javascript
     {
@@ -104,11 +104,11 @@ Product Manager API is an mini product manager made with nodejs as a part of the
 
   ### DELETE /products/:id
 
-  This method delete the registry that contains a given specific id that match the code field on the Product. If the product doesn't exists on database returns a failure message, if exists return a success message.
+  This method deletes a product matching the specified id. It returns a success message if the product exists, or an error message if the product doesn't exist.
 
   ### GET /products/:id
 
-  This method return the data of a product, if exists. Else, return a error message. Depending on the type returns data on the models bellow:
+  This method returns the detailed info of a product, when it exists. Else, it returns an error message. The returning varies depending on the product type:
 
   ```javascript
     //clothing product
@@ -134,9 +134,9 @@ Product Manager API is an mini product manager made with nodejs as a part of the
 
   ### GET /products
 
-  Return an array of objects with all product registries, independently of type. 
-  (Please, if you can contribute with implementation of tests and pagination I will be grateful.
-  To se how contribute, take a look on the section bellow). Look at this simple response example: 
+  Return an array of objects with all product registries, regadless of type. 
+  (Please, if you can contribute with implementation of tests and pagination I would be grateful.
+  To se how contribute, take a look on the section bellow). 
 
   ```javascript
     [
@@ -180,9 +180,9 @@ Product Manager API is an mini product manager made with nodejs as a part of the
     ]
   ```
 
-  ### GET /relatory
+  ### GET /summary
 
-  Return an array of objects with the name, total value and quantity of a same product: 
+  Return an array of objects with the name, total value and quantity of a product: 
 
   ```javascript
     {

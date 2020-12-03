@@ -1,7 +1,6 @@
-import { number } from "yup";
-import RelatoryField from "../classes/RelatoryField"
+import SummaryField from "../classes/SummaryField"
 
-function isOnArray(array : RelatoryField[], name: string): number{
+function isOnArray(array : SummaryField[], name: string): number{
   return array.findIndex(( product )=>{
     return product.name == name;
   })
