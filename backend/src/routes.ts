@@ -7,7 +7,7 @@ routes.post('/products', ProductsController.create)
 routes.post('/products/bydate', ProductsController.filterByDate)
 routes.get('/products', ProductsController.index)
 routes.get('/products/:id', ProductsController.show)
-routes.get('/relatory', ProductsController.relatory)
+routes.get('/relatory', ProductsController.summary)
 routes.delete('/products/:id', ProductsController.delete)
 
 export default routes;
