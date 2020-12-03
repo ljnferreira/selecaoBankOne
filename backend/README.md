@@ -38,7 +38,9 @@ Product Manager API is an mini product manager made with nodejs as a part of the
     * POST /products/bydate that will return an object with quantity of an product registered between 2 dates;
     * GET /products that return a list off all products and their respective details;
     * GET /products/:id that will return all details of an product with the specified id;
+    * GET /relatory that will return a list of product name, total value and quantity in stock;
     * DELETE /products/:id that will delete a product with the specified id;
+
 
 
   ### POST /create
@@ -130,17 +132,17 @@ Product Manager API is an mini product manager made with nodejs as a part of the
     }
   ```
 
-  ### GET /products/
+  ### GET /products
 
   Return an array of objects with all product registries, independently of type. 
-  (Please, if you can contribute with implementation of tests anf pagination I will be grateful.
+  (Please, if you can contribute with implementation of tests and pagination I will be grateful.
   To se how contribute, take a look on the section bellow). Look at this simple response example: 
 
   ```javascript
     [
       //clothing product
       {
-        "name": "name",
+        "name": "product 1",
         "price": 0.00,
         "categoryId": 1,
         "color": "color",
@@ -148,7 +150,7 @@ Product Manager API is an mini product manager made with nodejs as a part of the
       },
       //food genre product
       {
-        "name": "name",
+        "name": "product 2",
         "price": 0.00,
         "categoryId": 2,
         "fabricationDate": "2020-11-15T03:00:00.000Z", //Javascript Date
@@ -158,7 +160,7 @@ Product Manager API is an mini product manager made with nodejs as a part of the
       },
       //clothing product
       {
-        "name": "name",
+        "name": "product 3",
         "price": 0.00,
         "categoryId": 1,
         "color": "color",
@@ -166,7 +168,7 @@ Product Manager API is an mini product manager made with nodejs as a part of the
       },
       //food genre product
       {
-        "name": "name",
+        "name": "product 4",
         "price": 0.00,
         "categoryId": 2,
         "fabricationDate": "2020-11-15T03:00:00.000Z", //Javascript Date
@@ -176,6 +178,25 @@ Product Manager API is an mini product manager made with nodejs as a part of the
       },
 
     ]
+  ```
+
+  ### GET /relatory
+
+  Return an array of objects with the name, total value and quantity of a same product: 
+
+  ```javascript
+    {
+        "name": "product 1",
+        "totalValue": 15.96,
+        "quantity": 4
+    },
+    {
+        "name": "product 2",
+        "totalValue": 35.91000000000001,
+        "quantity": 9
+    }
+]
+  
   ```
 
 ## Contributing
