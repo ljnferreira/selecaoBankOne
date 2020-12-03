@@ -1,4 +1,4 @@
-export default class RelatoryField {
+export default class SummaryField {
 
   name: string;
   totalValue: number;

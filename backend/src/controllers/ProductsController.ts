@@ -10,7 +10,7 @@ import FoodDetails from "../models/FoodDetails";
 import ProductsView from "../views/ProductsView";
 import Product from "../classes/Product";
 import { getProductWithDetails } from "../utils/getProductWithDetails";
-import RelatoryField from "../classes/RelatoryField";
+import SummaryField from "../classes/SummaryField";
 import isOnArray from "../utils/isOnArray";
 
 export default {
@@ -166,27 +166,27 @@ export default {
     
   },
 
-  async relatory(request: Request, response: Response) {
+  async summary(request: Request, response: Response) {
     const productRepository = getRepository(ProductModel);
     const products = await productRepository.find();
 
-    const partialRelatory = products.map((product) => {
-      return new RelatoryField(product.name, product.price, 1);
+    const partialSummary = products.map((product) => {
+      return new SummaryField(product.name, product.price, 1);
     })
 
-    let finalRelatory: RelatoryField[] = [];
+    let finalSummary: SummaryField[] = [];
 
-    partialRelatory.map((product) => {
-      let index = isOnArray(finalRelatory, product.name);
+    partialSummary.map((product) => {
+      let index = isOnArray(finalSummary, product.name);
       if(index == (-1)){
-        finalRelatory.push(product);
+        finalSummary.push(product);
       }else{
-        finalRelatory[index].quantity += product.quantity;
-        finalRelatory[index].totalValue += product.totalValue;
+        finalSummary[index].quantity += product.quantity;
+        finalSummary[index].totalValue += product.totalValue;
       }
     })
 
-    return response.status(200).json(finalRelatory);
+    return response.status(200).json(finalSummary);
 
   }
 
