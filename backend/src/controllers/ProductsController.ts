@@ -10,6 +10,8 @@ import FoodDetails from "../models/FoodDetails";
 import ProductsView from "../views/ProductsView";
 import Product from "../classes/Product";
 import { getProductWithDetails } from "../utils/getProductWithDetails";
+import RelatoryField from "../classes/RelatoryField";
+import isOnArray from "../utils/isOnArray";
 
 export default {
   async create(request: Request, response: Response){
@@ -162,5 +164,30 @@ export default {
 
     return response.status(200).json(result);
     
+  },
+
+  async relatory(request: Request, response: Response) {
+    const productRepository = getRepository(ProductModel);
+    const products = await productRepository.find();
+
+    const partialRelatory = products.map((product) => {
+      return new RelatoryField(product.name, product.price, 1);
+    })
+
+    let finalRelatory: RelatoryField[] = [];
+
+    partialRelatory.map((product) => {
+      let index = isOnArray(finalRelatory, product.name);
+      if(index == (-1)){
+        finalRelatory.push(product);
+      }else{
+        finalRelatory[index].quantity += product.quantity;
+        finalRelatory[index].totalValue += product.totalValue;
+      }
+    })
+
+    return response.status(200).json(finalRelatory);
+
   }
+
 }
